@@ -24,7 +24,7 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
       <div className="inline-flex">
         <PaginationArrow
           direction="left"
-          href={createPageURL(currentPage - 1)}
+          href={createPageURL(currentPage - 1) as Route}
           isDisabled={currentPage <= 1}
         />
 
@@ -40,7 +40,7 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
             return (
               <PaginationNumber
                 key={page}
-                href={createPageURL(page)}
+                href={createPageURL(page) as Route}
                 page={page}
                 position={position}
                 isActive={currentPage === page}
@@ -51,7 +51,7 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
 
         <PaginationArrow
           direction="right"
-          href={createPageURL(currentPage + 1)}
+          href={createPageURL(currentPage + 1) as Route}
           isDisabled={currentPage >= totalPages}
         />
       </div>
@@ -66,7 +66,7 @@ function PaginationNumber({
   position,
 }: {
   page: number | string;
-  href: string;
+  href: Route<string> | URL;
   position?: "first" | "last" | "middle" | "single";
   isActive: boolean;
 }) {
@@ -84,7 +84,7 @@ function PaginationNumber({
   return isActive || position === "middle" ? (
     <div className={className}>{page}</div>
   ) : (
-    <Link href={href as Route} className={className}>
+    <Link href={href} className={className}>
       {page}
     </Link>
   );
@@ -95,7 +95,7 @@ function PaginationArrow({
   direction,
   isDisabled,
 }: {
-  href: string;
+  href: Route<string> | URL;
   direction: "left" | "right";
   isDisabled?: boolean;
 }) {
@@ -119,7 +119,7 @@ function PaginationArrow({
   return isDisabled ? (
     <div className={className}>{icon}</div>
   ) : (
-    <Link className={className} href={href as Route}>
+    <Link className={className} href={href}>
       {icon}
     </Link>
   );

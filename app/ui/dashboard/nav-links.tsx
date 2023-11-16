@@ -3,6 +3,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { ForwardRefExoticComponent, RefAttributes, SVGProps } from "react";
 import clsx from "clsx";
+import type { Route } from "next";
 
 import {
   UserGroupIcon,
@@ -12,7 +13,7 @@ import {
 
 type NavLink = {
   name: string;
-  href: string;
+  href: Route<string> | URL;
   icon: ForwardRefExoticComponent<
     Omit<SVGProps<SVGSVGElement>, "ref"> & {
       title?: string | undefined;

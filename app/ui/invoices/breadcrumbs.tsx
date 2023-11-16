@@ -5,7 +5,7 @@ import { Route } from "next";
 
 interface Breadcrumb {
   label: string;
-  href: string;
+  href: Route<string> | URL;
   active?: boolean;
 }
 
@@ -19,13 +19,13 @@ export default function Breadcrumbs({
       <ol className={clsx(lusitana.className, "flex text-xl md:text-2xl")}>
         {breadcrumbs.map((breadcrumb, index) => (
           <li
-            key={breadcrumb.href}
+            key={breadcrumb.href.toString()}
             aria-current={breadcrumb.active}
             className={clsx(
               breadcrumb.active ? "text-gray-900" : "text-gray-500",
             )}
           >
-            <Link href={breadcrumb.href as Route}>{breadcrumb.label}</Link>
+            <Link href={breadcrumb.href}>{breadcrumb.label}</Link>
             {index < breadcrumbs.length - 1 ? (
               <span className="mx-3 inline-block">/</span>
             ) : null}
