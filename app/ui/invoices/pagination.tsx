@@ -66,7 +66,7 @@ function PaginationNumber({
   position,
 }: {
   page: number | string;
-  href: UrlObject | __next_route_internal_types__.RouteImpl<string>;
+  href: string;
   position?: "first" | "last" | "middle" | "single";
   isActive: boolean;
 }) {
@@ -95,7 +95,7 @@ function PaginationArrow({
   direction,
   isDisabled,
 }: {
-  href: UrlObject | __next_route_internal_types__.RouteImpl<string>;
+  href: string;
   direction: "left" | "right";
   isDisabled?: boolean;
 }) {
