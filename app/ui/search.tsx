@@ -1,6 +1,7 @@
 "use client";
 
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import { type Route } from "next";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
 
@@ -15,7 +16,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
     params.set("page", "1");
     term ? params.set("query", term) : params.delete("query");
 
-    replace(`${pathname}?${params.toString()}`);
+    replace(`${pathname}?${params.toString()}` as Route);
   }, 300);
 
   return (
