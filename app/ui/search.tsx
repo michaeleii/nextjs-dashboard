@@ -15,10 +15,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
     params.set("page", "1");
     term ? params.set("query", term) : params.delete("query");
 
-    const searchUrl =
-      `${pathname}?${params.toString()}` as __next_route_internal_types__.RouteImpl<`${string}?${string}`>;
-
-    replace(searchUrl);
+    replace(`${pathname}?${params.toString()}`);
   }, 300);
 
   return (
