@@ -9,7 +9,6 @@ import { RevenueChartSkeleton } from "@/app/ui/skeletons";
 export const dynamic = "force-dynamic";
 
 export default async function Page() {
-  const latestInvoices = await fetchLatestInvoices();
   const {
     numberOfCustomers,
     numberOfInvoices,
@@ -35,7 +34,7 @@ export default async function Page() {
         <Suspense fallback={<RevenueChartSkeleton />}>
           <RevenueChart />
         </Suspense>
-        <LatestInvoices latestInvoices={latestInvoices} />
+        <LatestInvoices />
       </div>
     </main>
   );
