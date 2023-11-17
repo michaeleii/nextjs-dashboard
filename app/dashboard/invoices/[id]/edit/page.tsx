@@ -3,6 +3,7 @@ import Breadcrumbs from "@/app/ui/invoices/breadcrumbs";
 import { fetchCustomers, fetchInvoiceById } from "@/app/lib/data";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
+import { Route } from "next";
 export const metadata: Metadata = {
   title: "Edit",
 };
@@ -28,7 +29,7 @@ export default async function Page({
           { label: "Invoices", href: "/dashboard/invoices" },
           {
             label: "Edit Invoice",
-            href: `/dashboard/invoices/${id}/edit`,
+            href: `/dashboard/invoices/${id}/edit` as Route,
             active: true,
           },
         ]}
